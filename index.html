@@ -5,9 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/necolas.github.io_normalize.css_8.0.1_normalize.css">
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
     <title>Cruise Ships</title>
 </head>
 <body>
-    
+    <div id="viewport">
+        <div id="ports"></div>
+        <div id="ship"></div>
+        <button id="sailbutton">SET SAIL!</button>
+    </div>
+    <script src="./src/controller.js"></script>
+    <script src="./src/port.js"></script>
+    <script src="./src/itinerary.js"></script>
+    <script src="./src/ship.js"></script>
+    <script>
+        const dover = new Port("Dover")
+        const calais = new Port("Calais")
+        const soton = new Port("Soton")
+        const itinerary = new Itinerary([dover, calais, soton])
+        const ship = new Ship(itinerary)
+        const controller = new Controller(ship)
+
+        controller.renderPorts(itinerary.ports)
+        controller.renderShip(ship)
+    </script>
 </body>
 </html>
