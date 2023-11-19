@@ -61,8 +61,8 @@
     const nextPortElement = document.querySelector(
       `[data-port-index = "${nextPortIndex}"]`
     );
-    if(!nextPortIndex){
-        return "You have reached the end"
+    if(!nextPortElement){
+        return this.renderMessage("You're at the end of your trip matey!")
     }
     const shipElement = document.querySelector("#ship");
     const sailInterval = setInterval(()=>{
@@ -74,5 +74,14 @@
         }
         shipElement.style.left = `${shipOffsetLeft+1}px`
     },10)
+    this.renderMessage(`Hey Ho! We are leaving ${ship.currentPort.name}`)
   };
+
+  Controller.prototype.renderMessage = function renderMessage(message) {
+    const messageElement = document.createElement("div")
+    messageElement.setAttribute('id', 'message')
+    messageElement.innerHTML = message
+    document.querySelector("#viewport").appendChild(messageElement)
+    setTimeout(()=>{document.querySelector("#viewport").removeChild(messageElement)}, 1000)
+  }
 })();
