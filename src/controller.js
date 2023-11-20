@@ -104,4 +104,13 @@
         }
         displayBoard.innerHTML = `Current Port: ${ship.currentPort.name} Next Port: ${ship.itinerary.ports[nextPortIndex].name}`
     }
+
+    Controller.prototype.addPorts = function addPorts() {
+        this.ship = ship 
+        const submitButton = document.querySelector("#submit")
+        function updatePorts() {
+            this.ship.itinerary.ports.push(new Port(document.querySelector("#port")))
+        }
+        submitButton.addEventListener(onclick, updatePorts)
+    }
 })()

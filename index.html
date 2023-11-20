@@ -11,6 +11,11 @@
     <title>Cruise Ships</title>
 </head>
 <body>
+    <form>
+        <label for="port">Add Port</label>
+        <input type="text" id="port" name="port" placeholder="Port Name">
+        <button id="submit">Add</button>
+    </form>
     <div id="display"></div>
     <div id="viewport">
         <div id="ports"></div>
@@ -33,6 +38,7 @@
         controller.renderShip(ship)
         controller.renderMessage("Hey ho! Welcome aboard!")
         controller.renderDisplay()
+        controller.addPorts()
     </script>
 </body>
 </html>

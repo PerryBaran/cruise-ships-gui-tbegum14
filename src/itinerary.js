@@ -10,3 +10,4 @@
 		window.Itinerary = Itinerary;
 	}
 })();
+    
