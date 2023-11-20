@@ -11,6 +11,7 @@
     <title>Cruise Ships</title>
 </head>
 <body>
+    <div id="display"></div>
     <div id="viewport">
         <div id="ports"></div>
         <div id="ship"></div>
@@ -23,14 +24,15 @@
     <script>
         const dover = new Port("Dover")
         const calais = new Port("Calais")
-        const soton = new Port("Soton")
-        const itinerary = new Itinerary([dover, calais, soton])
+        const southampton = new Port("Southampton")
+        const itinerary = new Itinerary([dover, calais, southampton])
         const ship = new Ship(itinerary)
         const controller = new Controller(ship)
 
         controller.renderPorts(itinerary.ports)
         controller.renderShip(ship)
-        controller.renderMessage("Hey ho!")
+        controller.renderMessage("Hey ho! Welcome aboard!")
+        controller.renderDisplay()
     </script>
 </body>
 </html>

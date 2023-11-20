@@ -59,3 +59,11 @@ body {
     text-align: center;
     font-size: 30px;
 }
+
+#display {
+    color: white;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 30px;
+}
