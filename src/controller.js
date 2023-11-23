@@ -77,7 +77,7 @@
             }
             shipElement.style.left = `${shipOffsetLeft + 1}px`
         }, 10)
-        
+
         this.renderMessage(`Hey Ho! We are leaving ${ship.currentPort.name}`)
     }
 
@@ -99,18 +99,21 @@
         )
         const displayBoard = document.querySelector('#display')
         if (!nextPortElement) {
-            return (displayBoard.innerHTML = `Current Port: ${ship.currentPort.name}
-        Next Port: End of the trip`)
+            return (displayBoard.innerHTML = `Current Port: ${ship.currentPort.name} </br> Next Port: End of the trip`)
         }
-        displayBoard.innerHTML = `Current Port: ${ship.currentPort.name} Next Port: ${ship.itinerary.ports[nextPortIndex].name}`
+        displayBoard.innerHTML = `Current Port: ${ship.currentPort.name} </br> Next Port: ${ship.itinerary.ports[nextPortIndex].name}`
     }
 
-    Controller.prototype.addPorts = function addPorts() {
-        this.ship = ship 
-        const submitButton = document.querySelector("#submit")
-        function updatePorts() {
-            this.ship.itinerary.ports.push(new Port(document.querySelector("#port")))
+    Controller.prototype.addPorts = function addPorts(itinerary) {
+        const submitButton = document.querySelector('#submit')
+        function updatePorts(event) {
+            event.preventDefault()
+            console.log(itinerary.ports)
+            itinerary.ports.push(
+                new Port(document.querySelector('#port').value)
+            )
+            document.querySelector('form').reset()
         }
-        submitButton.addEventListener(onclick, updatePorts)
+        submitButton.addEventListener('click', updatePorts)
     }
 })()

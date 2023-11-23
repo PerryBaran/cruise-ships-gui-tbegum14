@@ -11,6 +11,7 @@
     <title>Cruise Ships</title>
 </head>
 <body>
+
     <form>
         <label for="port">Add Port</label>
         <input type="text" id="port" name="port" placeholder="Port Name">
@@ -20,8 +21,8 @@
     <div id="viewport">
         <div id="ports"></div>
         <div id="ship"></div>
-        <button id="sailbutton">SET SAIL!</button>
     </div>
+    <button id="sailbutton">SET SAIL!</button>
     <script src="./src/controller.js"></script>
     <script src="./src/port.js"></script>
     <script src="./src/itinerary.js"></script>
@@ -29,16 +30,16 @@
     <script>
         const dover = new Port("Dover")
         const calais = new Port("Calais")
-        const southampton = new Port("Southampton")
-        const itinerary = new Itinerary([dover, calais, southampton])
+        const itinerary = new Itinerary([dover, calais])
         const ship = new Ship(itinerary)
         const controller = new Controller(ship)
 
+        controller.addPorts(itinerary)
         controller.renderPorts(itinerary.ports)
         controller.renderShip(ship)
         controller.renderMessage("Hey ho! Welcome aboard!")
         controller.renderDisplay()
-        controller.addPorts()
+
     </script>
 </body>
 </html>
