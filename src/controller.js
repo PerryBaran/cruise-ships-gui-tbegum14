@@ -5,6 +5,7 @@
 
         const sailButton = document.querySelector('#sailbutton')
         sailButton.addEventListener('click', () => {
+            sailButton.disabled = true
             this.setSail()
         })
     }
@@ -58,6 +59,7 @@
 
     Controller.prototype.setSail = function setSail() {
         this.ship = ship
+        const sailButton = document.querySelector('#sailbutton')
         const nextPortIndex = ship.itinerary.ports.indexOf(ship.currentPort) + 1
         const nextPortElement = document.querySelector(
             `[data-port-index = "${nextPortIndex}"]`
@@ -73,6 +75,7 @@
                 ship.dock()
                 this.renderMessage(`Welcome to ${ship.currentPort.name}`)
                 this.renderDisplay()
+                sailButton.disabled = false
                 clearInterval(sailInterval)
             }
             shipElement.style.left = `${shipOffsetLeft + 1}px`
@@ -109,18 +112,15 @@
         function updatePorts(event) {
             event.preventDefault()
             const newPortName = document.querySelector('#portname').value
-            itinerary.ports.push(
-                new Port(newPortName)
-            )
+            itinerary.ports.push(new Port(newPortName))
             document.querySelector('form').reset()
             console.log(itinerary.ports)
             const parent = document.querySelector('#ports')
-            while(parent.firstChild){
+            while (parent.firstChild) {
                 parent.removeChild(parent.firstChild)
             }
             controller.renderPorts(itinerary.ports)
         }
         submitButton.addEventListener('click', updatePorts)
-
     }
 })()
