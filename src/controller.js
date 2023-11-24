@@ -108,12 +108,19 @@
         const submitButton = document.querySelector('#submit')
         function updatePorts(event) {
             event.preventDefault()
-            console.log(itinerary.ports)
+            const newPortName = document.querySelector('#portname').value
             itinerary.ports.push(
-                new Port(document.querySelector('#port').value)
+                new Port(newPortName)
             )
             document.querySelector('form').reset()
+            console.log(itinerary.ports)
+            const parent = document.querySelector('#ports')
+            while(parent.firstChild){
+                parent.removeChild(parent.firstChild)
+            }
+            controller.renderPorts(itinerary.ports)
         }
         submitButton.addEventListener('click', updatePorts)
+
     }
 })()
