@@ -5,9 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/necolas.github.io_normalize.css_8.0.1_normalize.css">
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
     <title>Cruise Ships</title>
 </head>
 <body>
-    
+    <form>
+        <label for="port">Add Port</label>
+        <input type="text" id="portname" name="portname" placeholder="Port Name">
+        <button id="submit">Add</button>
+    </form>
+    <div id="display"></div>
+    <div id="viewport">
+        <div id="ports"></div>
+        <div id="ship"></div>
+    </div>
+    <button id="sailbutton">SET SAIL!</button>
+    <script src="./src/controller.js"></script>
+    <script src="./src/port.js"></script>
+    <script src="./src/itinerary.js"></script>
+    <script src="./src/ship.js"></script>
+    <script>
+        const dover = new Port("Dover")
+        const itinerary = new Itinerary()
+        itinerary.ports = [dover]
+        const ship = new Ship(itinerary)
+        const controller = new Controller(ship)
+
+        controller.addPorts(itinerary)
+        controller.renderPorts(itinerary.ports)
+        controller.renderShip(ship)
+        controller.renderMessage("Hey ho! Welcome aboard!")
+        controller.renderDisplay()
+
+
+    </script>
 </body>
 </html>
